@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KS Agency ShareChat</title>
+<style>
+    body {
+        font-family: sans-serif;
+        user-select: none; 
+        overflow-y: scroll;
+    }
+    #logo {
+        width: 100px;
+        height: 100px;
+        margin: 30px auto 0;
+        display: block;
+        animation: jump 0.5s infinite alternate;
+    }
+    @keyframes jump {
+        from { transform: translateY(0); }
+        to { transform: translateY(-5px); }
+    }
+    #title {
+        text-align: center;
+        margin-top: 20px;
+        color: auto;
+    }
+    .button-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: blue;
+        color: white;
+        border: 2px solid black;
+        border-radius: 6px;
+        margin-right: 10px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+</style>
+</head>
+<body>
+    <img id="logo" src="https://i.postimg.cc/NG7ZfLZN/2-KS-Agency-Logo-Round-Cut.png" alt="KS Agency Logo">
+
+    <div id="title">
+        <h1 style="font-size: 30px;">KS Agency ShareChat</h1>
+        <h4 style="font-size: 16px;">All Languages Gift Chatroom Available</h4>
+        <h5 style="font-size: 15px;">All Languages FriendZone Available</h5>
+    </div>
+
+    <div class="button-container">
+        <a class="button" href="https://youtube.com/@KS-Agency-143?si=4UN0hSpkdiwB3sKM">KS Agency YouTube</a>
+        <br><br> 
+        <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSeEBBIwAwljWwHemxwv-mC2XEsiREpwER-RTxD0wbTk7_z0Gg/viewform?usp=sf_link">Apply Gift Box</a>
+        <br><br> 
+        <a class="button" href="http://www.google.com">Google</a>
+    </div>
+
+    <script>
+       
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
