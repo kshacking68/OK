@@ -1,54 +1,36 @@
-function sendMessage() {
-    const messageInput = document.getElementById('message-input');
-    const message = messageInput.value.trim();
+// Function to convert PNG to SVG using upng-js
+async function convertToSVG() {
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
 
-    if (message !== '') {
-        displayMessage(message);
-        messageInput.value = '';
+    if (!file) {
+        alert('Please select a file.');
+        return;
     }
+
+    if (file.type !== 'image/png') {
+        alert('Please upload a PNG image.');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = async function(event) {
+        const arrayBuffer = event.target.result;
+        const img = new UPNG.PNG(arrayBuffer);
+        const svgString = img.toSVG();
+
+        if (svgString) {
+            const blob = new Blob([svgString], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            
+            const downloadLink = document.getElementById('downloadLink');
+            downloadLink.href = url;
+            downloadLink.download = 'converted.svg';
+            downloadLink.style.display = 'inline-block';
+        } else {
+            alert('Failed to convert PNG to SVG.');
+        }
+    };
+
+    reader.readAsArrayBuffer(file);
 }
-
-function displayMessage(message) {
-    const chatContainer = document.getElementById('chat-container');
-    const messageElement = document.createElement('div');
-    messageElement.textContent = message;
-    messageElement.classList.add('message');
-    chatContainer.appendChild(messageElement);
-
-    
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-}
-
-
-const logo = document.getElementById('logo');
-let isJumping = false;
-
-logo.addEventListener('mouseover', () => {
-    if (!isJumping) {
-        logo.style.transform = 'translateY(-10px)';
-        isJumping = true;
-    }
-});
-
-logo.addEventListener('mouseout', () => {
-    if (isJumping) {
-        logo.style.transform = 'translateY(0)';
-        isJumping = false;
-    }
-});
-
-
-document.addEventListener('contextmenu', (event) => {
-    event.preventDefault();
-});
-
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-});
-document.getElementById('button1').onclick = function() {
-    window.location.href = 'https://youtube.com/@KS-Agency-143?si=4UN0hSpkdiwB3sKM';
-};
-
-document.getElementById('button2').onclick = function() {
-    window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSeEBBIwAwljWwHemxwv-mC2XEsiREpwER-RTxD0wbTk7_z0Gg/viewform?usp=sf_link';
-};
